@@ -24,12 +24,12 @@ Features
 ``toml_get.core``
 '''''''''''''''''
 
-``main(args: Optional[Iterable[str]] = None, /) -> None``
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+``main(args: Iterable[str] | None = None, /) -> None``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This function is the CLI implementation of ``run``.
 
-``run(*, infiles: Iterable[str] = (), keys: Iterable[str] = (), default: object = None, outstring: str = "%s\n", outfile: str = "-", overwrite: bool = False) -> None``
+``run(*, default: object = None, infiles: Iterable[str] = (), keys: Iterable[str] = (), outfile: str = "-", outstring: str = "%s\n", overwrite: bool = False) -> None``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Typing
