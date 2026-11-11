@@ -1,7 +1,7 @@
 import argparse
 import tomllib
 from collections.abc import Iterable
-from typing import Any, Optional
+from typing import Any
 
 __all__ = ["main", "run"]
 
@@ -29,10 +29,16 @@ def get_from_file(
     return data
 
 
-def main(args: Optional[Iterable[str]] = None, /) -> None:
+def main(args: Iterable[str] | None = None, /) -> None:
     parser: argparse.ArgumentParser
     space: argparse.Namespace
-    parser = argparse.ArgumentParser(fromfile_prefix_chars="@")
+    parser = argparse.ArgumentParser(
+        fromfile_prefix_chars="@",
+        prog="toml_get",
+    )
+    parser.add_argument(
+        "--default",
+    )
     parser.add_argument(
         "--infile",
         action="append",
@@ -46,15 +52,12 @@ def main(args: Optional[Iterable[str]] = None, /) -> None:
         dest="keys",
     )
     parser.add_argument(
-        "--default",
+        "--outfile",
+        default="-",
     )
     parser.add_argument(
         "--outstring",
         default="%s\n",
-    )
-    parser.add_argument(
-        "--outfile",
-        default="-",
     )
     parser.add_argument(
         "--overwrite",
@@ -66,11 +69,11 @@ def main(args: Optional[Iterable[str]] = None, /) -> None:
 
 def run(
     *,
+    default: object = None,
     infiles: Iterable[str] = (),
     keys: Iterable[str] = (),
-    default: object = None,
-    outstring: str = "%s\n",
     outfile: str = "-",
+    outstring: str = "%s\n",
     overwrite: bool = False,
 ) -> None:
     ans: Any
