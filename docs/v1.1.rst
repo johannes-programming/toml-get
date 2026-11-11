@@ -1,0 +1,77 @@
+Overview
+--------
+
+This project accesses a given TOML file.
+
+Installation
+------------
+
+To install ``toml_get``, you can use ``pip``.
+Open your terminal and run:
+
+.. code-block:: shell
+
+    pip install toml_get
+
+Typing
+------
+
+This project is strictly typed with ``mypy``.
+
+Features
+--------
+
+``toml_get.core``
+'''''''''''''''''
+
+``main(args: Iterable[str] | None = None) -> int``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This function is the CLI implementation of ``run``.
+
+.. container:: versionchanged
+
+    **Changed in version 1.1:** ``main`` now returns an ``int`` exit code.
+
+``parse_args(args: Iterable[str] | None = None) -> Namespace``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. container:: versionadded
+
+    **Added in version 1.1.**
+
+``run(*, default: object = None, infiles: Iterable[str] = (), keys: Iterable[str] = (), outfile: str = "-", outstring: str = "%s\n", overwrite: bool = False) -> None``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. container:: versionchanged
+
+    **Changed in version 1.1:** The keyword only parameters are now in alphabetical order.
+
+Typing
+------
+
+This project may be tested through its ``unittest`` scripts inside of its ``tests/`` directory.
+They in turn can be run by ``run_tests.py``.
+
+License
+-------
+
+This project is licensed under the MIT License.
+
+Links
+-----
+
+- Download: https://pypi.org/project/toml_get/#files
+- Index: https://pypi.org/project/toml_get/
+- Source: https://github.com/johannes-programming/toml_get/
+- Website: https://toml-get.johannes-programming.online/
+
+Impressum
+---------
+
+**Johannes Programming**
+
+- Name: Johannes
+- Email: johannes.programming@gmail.com
+- Homepage: https://www.johannes-programming.online/
+- Gravatar: https://www.johannes-programming.fyi/
