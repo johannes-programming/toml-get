@@ -24,7 +24,7 @@ commit: add
 	git commit --allow-empty $(PARAMS);
 
 commit-version: add py311
-	conda run -n py311 pip install 'toml_get>=1.0,<2' >/dev/null;
+	conda run -n py311 pip install 'toml_get>=1.1,<2' >/dev/null;
 	git commit --allow-empty "$$(conda run -n py311 python -m toml_get @make/toml_get.txt)";
 
 clean:
