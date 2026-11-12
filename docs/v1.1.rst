@@ -61,9 +61,9 @@ This project is licensed under the MIT License.
 Links
 -----
 
-- Download: https://pypi.org/project/toml_get/#files
-- Index: https://pypi.org/project/toml_get/
-- Source: https://github.com/johannes-programming/toml_get/
+- Download: https://pypi.org/project/toml-get/#files
+- Index: https://pypi.org/project/toml-get/
+- Source: https://github.com/johannes-programming/toml-get/
 - Website: https://toml-get.johannes-programming.online/
 
 Impressum
