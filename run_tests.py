@@ -1,12 +1,19 @@
+from __future__ import annotations
+
+__all__: list[str] = ["main", "test"]
+
+import sys
 import unittest
 
-__all__ = ["main"]
+
+def main() -> int:
+    return int(not test().wasSuccessful())
 
 
-def main() -> unittest.TextTestResult:
+def test() -> unittest.TextTestResult:
     loader: unittest.TestLoader
-    suite: unittest.TestSuite
     runner: unittest.TextTestRunner
+    suite: unittest.TestSuite
     loader = unittest.TestLoader()
     suite = loader.discover("tests")
     runner = unittest.TextTestRunner(verbosity=2)
@@ -14,4 +21,4 @@ def main() -> unittest.TextTestResult:
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

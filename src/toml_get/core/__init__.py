@@ -1,9 +1,14 @@
+from __future__ import annotations
+
+__all__: list[str] = ["main", "parse_args", "run"]
+
 import argparse
+import io
+import logging
 import tomllib
 from collections.abc import Iterable
+from importlib import metadata
 from typing import Any
-
-__all__ = ["main", "run"]
 
 
 def get_from_file(
@@ -12,7 +17,7 @@ def get_from_file(
     keys: Iterable[str],
 ) -> Any:
     data: dict[str, Any]
-    stream: Any
+    stream: io.BufferedReader
     x: str
     y: int | str
     if infile == "-":
@@ -29,10 +34,28 @@ def get_from_file(
     return data
 
 
-def main(args: Iterable[str] | None = None, /) -> None:
-    parser: argparse.ArgumentParser
+def main(args: Iterable[str] | None = None) -> int:
     space: argparse.Namespace
+    try:
+        space = parse_args(args)
+        run(**vars(space))
+    except SystemExit as exit:
+        if isinstance(exit.code, int):
+            return int(exit.code)
+        else:
+            return int(bool(exit.code))
+    except BaseException as exc:
+        logging.exception(exc)
+        return 1
+    else:
+        return 0
+
+
+def parse_args(args: Iterable[str] | None = None) -> argparse.Namespace:
+    parser: argparse.ArgumentParser
+    version: str
     parser = argparse.ArgumentParser(
+        add_help=False,
         fromfile_prefix_chars="@",
         prog="toml_get",
     )
@@ -63,8 +86,21 @@ def main(args: Iterable[str] | None = None, /) -> None:
         "--overwrite",
         action="store_true",
     )
-    space = parser.parse_args(args)
-    run(**vars(space))
+    version = "%(prog)s, version " + metadata.version("toml_get")
+    parser.add_argument(
+        "-V",
+        "--version",
+        action="version",
+        help="show the version and abort",
+        version=version,
+    )
+    parser.add_argument(
+        "-h",
+        "--help",
+        action="help",
+        help="show this message and abort",
+    )
+    return parser.parse_args(args)
 
 
 def run(
@@ -76,7 +112,8 @@ def run(
     outstring: str = "%s\n",
     overwrite: bool = False,
 ) -> None:
-    ans: Any
+    ans: object
+    infile: str
     stream: Any
     ans = None
     for infile in infiles:

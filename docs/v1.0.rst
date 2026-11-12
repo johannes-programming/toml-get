@@ -6,12 +6,12 @@ This project accesses a given TOML file.
 Installation
 ------------
 
-To install ``toml-get``, you can use ``pip``.
+To install ``toml_get``, you can use ``pip``.
 Open your terminal and run:
 
 .. code-block:: shell
 
-    pip install toml-get
+    pip install toml_get
 
 Typing
 ------
@@ -46,9 +46,9 @@ This project is licensed under the MIT License.
 Links
 -----
 
-- Download: https://pypi.org/project/toml-get/#files
-- Index: https://pypi.org/project/toml-get/
-- Source: https://github.com/johannes-programming/toml-get/
+- Download: https://pypi.org/project/toml_get/#files
+- Index: https://pypi.org/project/toml_get/
+- Source: https://github.com/johannes-programming/toml_get/
 - Website: https://toml-get.johannes-programming.online/
 
 Impressum
