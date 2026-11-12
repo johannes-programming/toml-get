@@ -6,12 +6,12 @@ This project accesses a given TOML file.
 Installation
 ------------
 
-To install ``toml_get``, you can use ``pip``.
+To install ``toml-get``, you can use ``pip``.
 Open your terminal and run:
 
 .. code-block:: shell
 
-    pip install toml_get
+    pip install toml-get
 
 Typing
 ------
